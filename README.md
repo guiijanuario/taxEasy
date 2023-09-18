@@ -1,12 +1,8 @@
-# API Via Cep
+# API Sistema de Pedidos
 
----
+## Resumo
 
-### 🔷 Resumo
-
-<p> 
-Objetivo: Criar uma API que busca o endereço pelo cep e fazer com que não seja realizada requisição para um cep que já foi consultado.
-</p>
+O objetivo deste projeto é criar uma API de sistema de pedidos, onde os produtos podem ser cadastrados e os pedidos são registrados com a soma total dos produtos e o cálculo do valor da entrega. Além disso, a API permite a busca automática do endereço com base no CEP informado.
 
 ---
 
@@ -19,18 +15,18 @@ Objetivo: Criar uma API que busca o endereço pelo cep e fazer com que não seja
     - Faça o clone do repositório do projeto para o seu ambiente de desenvolvimento.
 
 3. **Navegue até o Diretório:**
-    - Abra o terminal e navegue até o diretório onde se encontra o arquivo `ApiGerenciamentoEscolarApplication.java`.
+    - Abra o terminal e navegue até o diretório onde se encontra o arquivo `ApiTaxEasyApplication.java`.
 
 4. **Compilação:**
     - Compile o arquivo utilizando o seguinte comando:
       ```
-      javac ApiGerenciamentoEscolarApplication.java
+      javac ApiTaxEasyApplication.java
       ```
 
 5. **Execução:**
     - Após compilar, execute a aplicação com o seguinte comando:
       ```
-      java ApiGerenciamentoEscolarApplication.java
+      java ApiTaxEasyApplication.java
       ```
 
 6. **Acesso à Aplicação:**
@@ -59,7 +55,7 @@ Certifique-se de que a aplicação esteja em execução para que o Swagger possa
 A aplicação utiliza o banco de dados em memória H2 para armazenar os dados. Para acessar o console de administração do H2, siga os passos abaixo:
 
 1. Acesse [http://localhost:8080/h2-console](http://localhost:8080/h2-console) no seu navegador.
-2. No campo "JDBC URL", coloque `jdbc:h2:mem:dbViacep` (que é a URL de conexão com o banco de dados H2 em memória).
+2. No campo "JDBC URL", coloque `jdbc:h2:mem:dbtaxEasy` (que é a URL de conexão com o banco de dados H2 em memória).
 3. No campo "Username", insira `root`.
 4. No campo "Password", insira `admin123`.
 5. Clique em "Connect" para acessar o console de administração do H2.
@@ -68,23 +64,6 @@ Lembre-se de que o banco de dados em memória H2 é reiniciado sempre que a apli
 
 ---
 
-## 🧪 Utilização do Redis para Cache
-
-A aplicação utiliza o Redis, um banco de dados em memória, para realizar o cache dos endereços obtidos pelo CEP. Para começar a usar o Redis em sua aplicação, siga os passos abaixo para criar uma instância do Redis usando o Docker:
-
-1. **Instalar o Docker:**
-   Certifique-se de ter o Docker instalado em seu sistema. Você pode baixar e instalar o Docker de acordo com o seu sistema operacional. As instruções estão disponíveis no site oficial do Docker: [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/).
-
-2. **Abra o Terminal:**
-   Abra o terminal ou prompt de comando em seu sistema.
-
-3. **Baixar e Iniciar o Container Redis:**
-   Execute o seguinte comando para baixar e iniciar uma instância do Redis:
-
-   ```bash
-   docker run -d --name img-redis -p 6379:6379 redis
-   
----
 
 ## 👨‍💻 Autor
 

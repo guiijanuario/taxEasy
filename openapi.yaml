@@ -1,0 +1,521 @@
+openapi: 3.0.1
+info:
+  title: API - Busca Cep (Via Cep)
+  description: API desenvolvida para buscar endereço pelo CEP
+  version: '1'
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+paths:
+  /api/produtos/{id}:
+    get:
+      tags:
+        - Feature - Produtos
+      summary: ' : Lista um produto especifico pelo ID'
+      operationId: buscarPorId
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseProdutoDto'
+    put:
+      tags:
+        - Feature - Produtos
+      summary: ' : Altera um produto'
+      operationId: atualizarProduto
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestProdutoDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseProdutoDto'
+    delete:
+      tags:
+        - Feature - Produtos
+      summary: ' : Deleta um produto'
+      operationId: excluir
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+  /api/clientes/{id}:
+    get:
+      tags:
+        - Feature - Clientes
+      summary: ' : Busca um cliente pelo ID'
+      operationId: buscarClientePorId
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseClienteDto'
+    put:
+      tags:
+        - Feature - Clientes
+      summary: ' : Edita um cliente'
+      operationId: atualizarCliente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestClienteDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseClienteDto'
+    delete:
+      tags:
+        - Feature - Clientes
+      summary: ' : Deleta um cliente'
+      operationId: excluirCliente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+  /api/usuarios:
+    get:
+      tags:
+        - usuario-controller
+      summary: ' : Lista todos os usuários'
+      operationId: listarUsuarios
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UsuarioDto'
+    post:
+      tags:
+        - usuario-controller
+      summary: ' : Cadastra um novo usuário'
+      operationId: criarUsuario
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsuarioDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/produtos:
+    get:
+      tags:
+        - Feature - Produtos
+      summary: ' : Lista todos os Produtos'
+      operationId: listarTodos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseProdutoDto'
+    post:
+      tags:
+        - Feature - Produtos
+      summary: ' : Cadastra um produto'
+      operationId: criarProduto
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestProdutoDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseProdutoDto'
+  /api/pedidos:
+    post:
+      tags:
+        - Feature - Pedidos
+      summary: ' : Realiza um pedido'
+      operationId: criarPedido
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestPedidoDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponsePedidoDto'
+  /api/configuracoes:
+    post:
+      tags:
+        - sistema-configuracao-controller
+      operationId: cadastrarEmpresa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEmpresaDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEmpresaDto'
+  /api/clientes:
+    get:
+      tags:
+        - Feature - Clientes
+      summary: ' : Lista todos os clientes'
+      operationId: listarClientes
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseClienteDto'
+    post:
+      tags:
+        - Feature - Clientes
+      summary: ' : Cadastra um cliente'
+      operationId: criarCliente
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestClienteDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseClienteDto'
+  /api/configuracoes/{id}:
+    get:
+      tags:
+        - sistema-configuracao-controller
+      operationId: buscarPorId_1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEmpresaDto'
+  /api/cep:
+    get:
+      tags:
+        - Feature - Cep
+      summary: ' : Busca endereço pelo CEP'
+      operationId: buscaCep
+      parameters:
+        - name: cepRequestDto
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/CepRequestDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnderecoResponseDto'
+  /api/cep/distancia:
+    get:
+      tags:
+        - Feature - Cep
+      summary: ' : Calcula a distância entre o cep de origem e o cep do body'
+      operationId: calcularDistanciaEntreCeps
+      parameters:
+        - name: destinoCepDto
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/DestinoCepDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+  /api/usuarios/{userId}:
+    delete:
+      tags:
+        - usuario-controller
+      summary: ' : Deleta um usuário'
+      operationId: deletarUsuario
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+components:
+  schemas:
+    RequestProdutoDto:
+      type: object
+      properties:
+        nome:
+          type: string
+        descricao:
+          type: string
+        preco:
+          type: number
+        categoria:
+          type: string
+    ResponseProdutoDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nome:
+          type: string
+        descricao:
+          type: string
+        preco:
+          type: number
+        categoria:
+          type: string
+    RequestClienteDto:
+      required:
+        - cpf
+        - email
+        - nome
+        - telefone
+      type: object
+      properties:
+        nome:
+          type: string
+        email:
+          type: string
+        telefone:
+          type: string
+        cpf:
+          type: string
+    ResponseClienteDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nome:
+          type: string
+        email:
+          type: string
+        telefone:
+          type: string
+    RoleModel:
+      type: object
+      properties:
+        id_role:
+          type: integer
+          format: int64
+        role:
+          type: string
+          enum:
+            - ROLE_USER
+            - ROLE_ADMIN
+        authority:
+          type: string
+    UsuarioDto:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleModel'
+    RequestPedidoDto:
+      type: object
+      properties:
+        produtosIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+        cepEntrega:
+          type: string
+        numeroCasaEntrega:
+          type: string
+        clienteId:
+          type: integer
+          format: int64
+    EnderecoResponseDto:
+      type: object
+      properties:
+        cep:
+          type: string
+          description: CEP
+          example: 87000-00
+        logradouro:
+          type: string
+          description: Rua/Av
+          example: Rua Juruá
+        complemento:
+          type: string
+          description: Complemento do endereço
+          example: Perto de algum lugar
+        bairro:
+          type: string
+          description: Bairro
+          example: Jardim Antunes
+        cidade:
+          type: string
+          description: Cidade
+          example: Maringá
+        uf:
+          type: string
+          description: Estado
+          example: PR
+    ResponsePedidoDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        produtos:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResponseProdutoDto'
+        cepEntrega:
+          $ref: '#/components/schemas/EnderecoResponseDto'
+        numeroCasa:
+          type: string
+        nomeCliente:
+          type: string
+        taxaEntrega:
+          type: number
+        valorTotal:
+          type: number
+    RequestEmpresaDto:
+      type: object
+      properties:
+        nomeEmpresa:
+          type: string
+        cnpj:
+          type: string
+        cepOrigem:
+          type: string
+        numeroOrigem:
+          type: string
+        custoEntrega:
+          type: number
+    ResponseEmpresaDto:
+      type: object
+      properties:
+        nomeEmpresa:
+          type: string
+        cnpj:
+          type: string
+        cepOrigem:
+          type: string
+        numeroOrigem:
+          type: string
+        custoEntrega:
+          type: number
+    CepRequestDto:
+      type: object
+      properties:
+        cep:
+          type: string
+          description: CEP
+          example: 87000-00
+    DestinoCepDto:
+      type: object
+      properties:
+        destinoCep:
+          type: string

@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class ProdutoController {
     @Autowired
     private ProdutoService produtoService;
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = " : Lista todos os Produtos", method = "GET")
     @GetMapping
     public ResponseEntity<List<ResponseProdutoDto>> listarTodos() {
@@ -28,6 +30,7 @@ public class ProdutoController {
         return ResponseEntity.ok(produtos);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = " : Lista um produto especifico pelo ID", method = "GET")
     @GetMapping("/{id}")
     public ResponseEntity<ResponseProdutoDto> buscarPorId(@PathVariable Long id) {
@@ -38,6 +41,7 @@ public class ProdutoController {
         return ResponseEntity.notFound().build();
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = " : Cadastra um produto", method = "POST")
     @PostMapping
     public ResponseEntity<ResponseProdutoDto> criarProduto(@RequestBody RequestProdutoDto requestProdutoDto) {
@@ -45,6 +49,7 @@ public class ProdutoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(produto);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = " : Altera um produto", method = "PUT")
     @PutMapping("/{id}")
     public ResponseEntity<ResponseProdutoDto> atualizarProduto(@PathVariable Long id, @RequestBody RequestProdutoDto requestProdutoDto) {
@@ -56,11 +61,11 @@ public class ProdutoController {
 
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = " : Deleta um produto", method = "DELETE")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable Long id) {
         produtoService.excluir(id);
         return ResponseEntity.noContent().build();
     }
-
 }

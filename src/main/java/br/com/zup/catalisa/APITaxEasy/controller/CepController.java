@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -22,6 +23,7 @@ public class CepController {
     @Autowired
     CepValidations cepValidations;
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping
     @Operation(summary = " : Busca endereço pelo CEP", method = "GET")
     @Cacheable("cep")
@@ -30,6 +32,7 @@ public class CepController {
         return ResponseEntity.ok(enderecoEncontrado);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = " : Calcula a distância entre o cep de origem e o cep do body", method = "GET")
     @GetMapping("/distancia")
     public ResponseEntity<String> calcularDistanciaEntreCeps(@RequestBody DestinoCepDto destinoCepDto) {

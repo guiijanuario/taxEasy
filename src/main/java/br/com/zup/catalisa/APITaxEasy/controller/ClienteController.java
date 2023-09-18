@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = " : Lista todos os clientes", method = "GET")
     @GetMapping
     public ResponseEntity<List<ResponseClienteDto>> listarClientes() {
@@ -28,6 +30,7 @@ public class ClienteController {
         return ResponseEntity.ok(clientes);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = " : Busca um cliente pelo ID", method = "GET")
     @GetMapping("/{id}")
     public ResponseEntity<ResponseClienteDto> buscarClientePorId(@PathVariable Long id) {
@@ -38,6 +41,7 @@ public class ClienteController {
         return ResponseEntity.notFound().build();
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = " : Cadastra um cliente", method = "POST")
     @PostMapping
     public ResponseEntity<ResponseClienteDto> criarCliente(@RequestBody @Valid RequestClienteDto requestClienteDto) {
@@ -45,6 +49,7 @@ public class ClienteController {
         return ResponseEntity.status(HttpStatus.CREATED).body(cliente);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = " : Edita um cliente", method = "PUT")
     @PutMapping("/{id}")
     public ResponseEntity<ResponseClienteDto> atualizarCliente(@PathVariable Long id, @RequestBody @Valid RequestClienteDto requestClienteDto) {
@@ -55,6 +60,7 @@ public class ClienteController {
         return ResponseEntity.notFound().build();
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = " : Deleta um cliente", method = "DELETE")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluirCliente(@PathVariable Long id) {
