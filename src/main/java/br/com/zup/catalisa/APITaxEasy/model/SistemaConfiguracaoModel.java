@@ -1,4 +1,4 @@
-package br.com.zup.catalisa.APITaxEasy.config;
+package br.com.zup.catalisa.APITaxEasy.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

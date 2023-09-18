@@ -1,5 +1,6 @@
-package br.com.zup.catalisa.APITaxEasy.config;
+package br.com.zup.catalisa.APITaxEasy.controller;
 
+import br.com.zup.catalisa.APITaxEasy.service.SistemaConfiguracaoService;
 import br.com.zup.catalisa.APITaxEasy.dto.RequestEmpresaDto;
 import br.com.zup.catalisa.APITaxEasy.dto.ResponseEmpresaDto;
 import org.springframework.beans.factory.annotation.Autowired;

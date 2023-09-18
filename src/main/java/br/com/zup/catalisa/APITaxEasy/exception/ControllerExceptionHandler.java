@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestControllerAdvice
 public class ControllerExceptionHandler {
-    @ExceptionHandler({ProdutoNaoEncontradoException.class, ClienteNaoEncontradoException.class})
+    @ExceptionHandler({ProdutoNaoEncontradoException.class, ClienteNaoEncontradoException.class,ProdutosNaoEncontradosException.class})
     public ResponseEntity<String> handleNotFoundExceptions(Exception ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }

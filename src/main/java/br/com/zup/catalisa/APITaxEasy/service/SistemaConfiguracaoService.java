@@ -1,8 +1,10 @@
-package br.com.zup.catalisa.APITaxEasy.config;
+package br.com.zup.catalisa.APITaxEasy.service;
 
 import br.com.zup.catalisa.APITaxEasy.dto.RequestEmpresaDto;
 import br.com.zup.catalisa.APITaxEasy.dto.ResponseEmpresaDto;
 import br.com.zup.catalisa.APITaxEasy.exception.EmpresaNaoEncontradaException;
+import br.com.zup.catalisa.APITaxEasy.model.SistemaConfiguracaoModel;
+import br.com.zup.catalisa.APITaxEasy.repository.SistemaConfiguracaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

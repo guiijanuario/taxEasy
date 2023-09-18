@@ -1,7 +1,6 @@
 package br.com.zup.catalisa.APITaxEasy.dto;
 
 
-import br.com.zup.catalisa.APITaxEasy.config.SistemaConfiguracaoModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
