@@ -80,9 +80,6 @@ public class ProdutoService {
                 produtoModel.setDescricao(requestProdutoDto.descricao());
             }
 
-            if (requestProdutoDto.preco() != null) {
-                produtoModel.setPreco(requestProdutoDto.preco());
-            }
 
             if (requestProdutoDto.categoria() != null && !requestProdutoDto.categoria().isEmpty()) {
                 produtoModel.setCategoria(requestProdutoDto.categoria());

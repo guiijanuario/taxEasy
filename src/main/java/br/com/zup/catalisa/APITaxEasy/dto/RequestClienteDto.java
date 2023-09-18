@@ -1,8 +1,8 @@
 package br.com.zup.catalisa.APITaxEasy.dto;
 
-import br.com.caelum.stella.bean.validation.CPF;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.br.CPF;
 
 public record RequestClienteDto(
         @NotBlank(message = "O campo nome é obrigatório")

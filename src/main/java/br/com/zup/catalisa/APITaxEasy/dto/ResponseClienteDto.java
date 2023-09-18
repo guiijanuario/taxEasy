@@ -1,11 +1,8 @@
 package br.com.zup.catalisa.APITaxEasy.dto;
 
-import br.com.zup.catalisa.APITaxEasy.model.PedidoModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -15,5 +12,4 @@ public class ResponseClienteDto {
     private String nome;
     private String email;
     private String telefone;
-    private List<PedidoModel> pedidos;
 }

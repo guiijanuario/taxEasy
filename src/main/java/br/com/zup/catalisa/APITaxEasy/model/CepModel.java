@@ -42,16 +42,4 @@ public class CepModel implements Serializable {
 
     @Schema(description = "Estado", example = "PR")
     private String uf;
-
-    @Schema(description = "Número do IBGE", example = "3550308")
-    private String ibge;
-
-    @Schema(description = "Guia de Informação e Apuração do ICMS", example = "1004")
-    private String gia;
-
-    @Schema(description = "Código de área", example = "44")
-    private String ddd;
-
-    @Schema(description = "Sistema Integrado de Administração Financeira do Governo Federal", example = "7107")
-    private String siafi;
 }

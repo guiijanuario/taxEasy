@@ -1,12 +1,12 @@
 package br.com.zup.catalisa.APITaxEasy.controller;
-import br.com.zup.catalisa.APITaxEasy.dto.CepRequestDto;
-import br.com.zup.catalisa.APITaxEasy.dto.EnderecoResponseDto;
+import br.com.zup.catalisa.APITaxEasy.dto.*;
 import br.com.zup.catalisa.APITaxEasy.service.BuscaCepService;
 import br.com.zup.catalisa.APITaxEasy.validations.CepValidations;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,4 +29,16 @@ public class CepController {
         EnderecoResponseDto enderecoEncontrado = buscaCepService.findCep(cepRequestDto);
         return ResponseEntity.ok(enderecoEncontrado);
     }
+
+    @Operation(summary = " : Calcula a distância entre o cep de origem e o cep do body", method = "GET")
+    @GetMapping("/distancia")
+    public ResponseEntity<String> calcularDistanciaEntreCeps(@RequestBody DestinoCepDto destinoCepDto) {
+        try {
+            String resposta = buscaCepService.getDistanceBetweenCeps(destinoCepDto.getDestinoCep());
+            return ResponseEntity.ok(resposta);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao calcular a distância: " + e.getMessage());
+        }
+    }
+
 }

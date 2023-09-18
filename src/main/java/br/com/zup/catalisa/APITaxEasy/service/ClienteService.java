@@ -25,8 +25,7 @@ public class ClienteService {
                         clienteModel.getId(),
                         clienteModel.getNome(),
                         clienteModel.getEmail(),
-                        clienteModel.getTelefone(),
-                        clienteModel.getPedidos()))
+                        clienteModel.getTelefone()))
                 .collect(Collectors.toList());
     }
 
@@ -36,8 +35,7 @@ public class ClienteService {
                         clienteModel.getId(),
                         clienteModel.getNome(),
                         clienteModel.getEmail(),
-                        clienteModel.getTelefone(),
-                        clienteModel.getPedidos()))
+                        clienteModel.getTelefone()))
                 .orElseThrow(() -> new ClienteNaoEncontradoException(id));
     }
 
